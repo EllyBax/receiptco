@@ -17,7 +17,9 @@ function getSaleId() {
 
 async function saveReceiptToAsyncStorage(receiptContent: string) {
   const saleId = getSaleId();
+  const date = new Date().toLocaleDateString();
   const jsonData = JSON.stringify({
+    date: date,
     receipt: receiptContent,
   });
   await AsyncStorage.setItem(saleId, jsonData).then(() => {
